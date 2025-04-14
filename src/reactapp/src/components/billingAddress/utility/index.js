@@ -9,7 +9,7 @@ export const billingAddrOtherOptionField =
 
 export const billingAddressFormInitValues = {
   email: '',
-  salutation: 0,
+  salutation: 1, // Mr
   company: '',
   firstname: '',
   lastname: '',

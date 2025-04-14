@@ -12,7 +12,7 @@
   "author": "Hyvä Themes BV",
   "license": "BSD-3-Clause",
   "private": true,
-  "proxy": "https://demo.hyva.io",
+  "proxy": "https://careline-local2.vax.co.uk",
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "formik": "^2.2.9",

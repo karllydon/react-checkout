@@ -55,7 +55,7 @@ function SelectInput({
         name={name}
         id={inputId}
         placeholder={placeholder}
-        className={`w-full p-2 border form-select xs:block max-w-md ${
+        className={`w-full p-2 form-select xs:block max-w-md ${
           hasError ? 'border-dashed border-red-500' : ''
         }`}
         onChange={(event) => {

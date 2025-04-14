@@ -11,7 +11,7 @@ function SaveButton({ actions, isFormValid }) {
       disable={!isFormValid}
       click={actions.saveAddress}
     >
-      {__('Save')}
+      {__('Save and Continue')}
     </Button>
   );
 }

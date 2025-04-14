@@ -1,9 +1,13 @@
 /**
  * different styles can be found at https://tailwindcss-forms.vercel.app/
  **/
-.form-input,
+.form-input {
+    @apply mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black   
+}
 .form-email,
-.form-select,
+.form-select {
+    @apply block w-full mt-0 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black
+}
 .form-multiselect,
 .form-textarea {
     @apply border border-gray-300 rounded-md shadow-sm;
