@@ -29,7 +29,9 @@ import useBillingAddressCartContext from '../hooks/useBillingAddressCartContext'
 const requiredMessage = __('%1 is required');
 
 const initValidationSchema = {
-  company: YupString().required(requiredMessage),
+  email: YupString().required(requiredMessage).email(__('Email is invalid')),
+  salutation: YupString().required(requiredMessage),
+  company: YupString().nullable(),
   firstname: YupString().required(requiredMessage),
   lastname: YupString().required(requiredMessage),
   street: YupArray().test(

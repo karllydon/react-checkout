@@ -8,6 +8,8 @@ export const billingAddrOtherOptionField =
   'additional.billing_address_selected_other_option';
 
 export const billingAddressFormInitValues = {
+  email: '',
+  salutation: 0,
   company: '',
   firstname: '',
   lastname: '',

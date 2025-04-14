@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import Login from '../login';
 import Totals from '../totals';
 import CartItemsForm from '../items';
 import PlaceOrder from '../placeOrder';
@@ -84,7 +83,6 @@ function CheckoutForm() {
           <div className="flex flex-col my-6 space-y-2 md:flex-row md:space-y-0">
             <div className="w-full lg:w-3/5 md:mr-2">
               <div className="w-full space-y-2 md:max-w-md xl:max-w-full">
-                <Login />
                 <AddressWrapper>
                   {!isVirtualCart && <ShippingAddress />}
                   <BillingAddress />

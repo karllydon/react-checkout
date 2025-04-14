@@ -47,6 +47,21 @@ export function prepareCountryStateOptions(stateList, countrySelected) {
   return _objToArray(stateListObj).sort(sortByItemLabel);
 }
 
+export function prepareSalutationOptions(salutationList) {
+  const salutationListObj = salutationList.reduce((accumulator, salutation) => {
+    if (salutation.id && salutation.name) {
+      accumulator[salutation.id] = {
+        value: salutation.id,
+        label: salutation.name,
+      };
+    }
+    return accumulator;
+  }, {});
+
+  // sorting by label
+  return _objToArray(salutationListObj).sort(sortByItemLabel);
+}
+
 export function prepareMostRecentAddressOptions(stateList) {
   const mostRecentAddressList = LocalStorage.getMostRecentlyUsedAddressList();
 

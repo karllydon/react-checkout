@@ -48,6 +48,7 @@ function BillingAddress() {
       isBillingAddressTouched: isFormSectionTouched,
       selectedRegion: formSectionData.formSectionValues?.region,
       selectedCountry: formSectionData.formSectionValues?.country,
+      selectedSalutation: formSectionData.formSectionValues?.salutation,
     }),
     [
       isBillingSame,

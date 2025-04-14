@@ -10,6 +10,7 @@ import { _keys } from '../../../utils';
 import LocalStorage from '../../../utils/localStorage';
 import { isValidCustomerAddressId } from '../../../utils/address';
 import useCountryState from '../../address/hooks/useCountryState';
+import useSalutationState from '../../address/hooks/useSalutationState';
 import useAddressWrapper from '../../address/hooks/useAddressWrapper';
 import useBillingAddressAppContext from '../hooks/useBillingAddressAppContext';
 import useFormValidateThenSubmit from '../../../hook/useFormValidateThenSubmit';
@@ -44,6 +45,8 @@ function BillingAddressForm() {
     fields,
     formikData,
   });
+  const { salutationOptions } = useSalutationState();
+
   const { selectedCountry, isBillingAddressTouched } = formikData;
 
   const saveAddressAction = async () => {
@@ -90,6 +93,12 @@ function BillingAddressForm() {
     setFieldValue(fields.region, '');
   };
 
+  const handleSalutationChange = (event) => {
+    const newValue = event.target.value;
+    setFieldTouched(fields.salutation, newValue);
+    setFieldValue(fields.salutation, newValue);
+  };
+
   if (viewMode) {
     return null;
   }
@@ -99,6 +108,22 @@ function BillingAddressForm() {
       <div className="py-2">
         <TextInput
           required
+          name={fields.email}
+          type="email"
+          formikData={formikData}
+          label={__('Email')}
+          onKeyDown={handleKeyDown}
+          placeholder={__('Email')}
+        />
+        <SelectInput
+          label={__('Salutation')}
+          required
+          name={fields.salutation}
+          formikData={formikData}
+          options={salutationOptions}
+          onChange={handleSalutationChange}
+        />
+        <TextInput
           label={__('Company')}
           name={fields.company}
           formikData={formikData}
