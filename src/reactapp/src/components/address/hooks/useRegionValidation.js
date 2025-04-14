@@ -7,7 +7,7 @@ import { _findById } from '../../../utils';
 import useAppContext from '../../../hook/useAppContext';
 
 const defaultRegionRule = YupString().nullable();
-const reqRegionRule = YupString().required(__('%1 is required', 'State'));
+const reqRegionRule = YupString().required(__('This is a required field'));
 
 export default function useRegionValidation(countryValue, validationSchema) {
   const { countryList } = useAppContext();

@@ -10,14 +10,13 @@ import { formikDataShape } from '../../utils/propTypes';
 import useBillingAddressCartContext from './hooks/useBillingAddressCartContext';
 
 const BillingAddressMemorized = React.memo(({ formikData }) => {
-  const { isBillingSame } = formikData;
   const { isVirtualCart } = useBillingAddressCartContext();
 
   return (
     <BillingAddressFormikProvider formikData={formikData}>
-      {!isBillingSame || isVirtualCart ? (
+      {isVirtualCart ? (
         <Card>
-          <ToggleBox title={__('Billing Information')} show>
+          <ToggleBox title={__('1. Billing Address')} show>
             <BillingAddressForm />
             <BillingAddressView />
           </ToggleBox>

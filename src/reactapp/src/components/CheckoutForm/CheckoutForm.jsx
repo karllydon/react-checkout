@@ -84,8 +84,8 @@ function CheckoutForm() {
             <div className="w-full lg:w-3/5 md:mr-2">
               <div className="w-full space-y-2 md:max-w-md xl:max-w-full">
                 <AddressWrapper>
-                  {!isVirtualCart && <ShippingAddress />}
                   <BillingAddress />
+                  {!isVirtualCart && <ShippingAddress />}
                   {!isVirtualCart && <ShippingMethodsForm />}
                   <PaymentMethod />
                   <CouponCode />

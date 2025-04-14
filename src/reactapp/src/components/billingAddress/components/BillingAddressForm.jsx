@@ -25,7 +25,6 @@ function BillingAddressForm() {
     submitHandler,
     handleKeyDown,
     billingValues,
-    isBillingSame,
     setFieldValue,
     setIsNewAddress,
     selectedAddress,
@@ -81,7 +80,6 @@ function BillingAddressForm() {
 
     setIsNewAddress(false);
     setSelectedAddress(newAddressId);
-    LocalStorage.saveCustomerAddressInfo(newAddressId, isBillingSame, false);
     reCalculateMostRecentAddressOptions();
   };
 
@@ -111,12 +109,10 @@ function BillingAddressForm() {
           name={fields.email}
           type="email"
           formikData={formikData}
-          label={__('Email')}
           onKeyDown={handleKeyDown}
           placeholder={__('Email')}
         />
         <SelectInput
-          label={__('Salutation')}
           required
           name={fields.salutation}
           formikData={formikData}
@@ -124,7 +120,20 @@ function BillingAddressForm() {
           onChange={handleSalutationChange}
         />
         <TextInput
-          label={__('Company')}
+          required
+          name={fields.firstname}
+          formikData={formikData}
+          onKeyDown={handleKeyDown}
+          placeholder={__('First name')}
+        />
+        <TextInput
+          required
+          name={fields.lastname}
+          formikData={formikData}
+          onKeyDown={handleKeyDown}
+          placeholder={__('Last name')}
+        />
+        <TextInput
           name={fields.company}
           formikData={formikData}
           onKeyDown={handleKeyDown}
@@ -132,23 +141,6 @@ function BillingAddressForm() {
         />
         <TextInput
           required
-          name={fields.firstname}
-          formikData={formikData}
-          label={__('First name')}
-          onKeyDown={handleKeyDown}
-          placeholder={__('First name')}
-        />
-        <TextInput
-          required
-          name={fields.lastname}
-          label={__('Last name')}
-          formikData={formikData}
-          onKeyDown={handleKeyDown}
-          placeholder={__('Last name')}
-        />
-        <TextInput
-          required
-          label={__('Street')}
           formikData={formikData}
           onKeyDown={handleKeyDown}
           placeholder={__('Street')}
@@ -156,15 +148,13 @@ function BillingAddressForm() {
         />
         <TextInput
           required
-          placeholder="12345"
+          placeholder="Postal Code"
           name={fields.zipcode}
           formikData={formikData}
-          label={__('Postal Code')}
           onKeyDown={handleKeyDown}
         />
         <TextInput
           required
-          label={__('City')}
           name={fields.city}
           formikData={formikData}
           placeholder={__('City')}
@@ -172,7 +162,6 @@ function BillingAddressForm() {
         />
         <SelectInput
           required
-          label={__('Country')}
           name={fields.country}
           formikData={formikData}
           options={countryOptions}
@@ -188,16 +177,15 @@ function BillingAddressForm() {
         />
         <TextInput
           required
-          label={__('Phone')}
           name={fields.phone}
           formikData={formikData}
           onKeyDown={handleKeyDown}
-          placeholder={__('+32 000 000 000')}
+          placeholder={__('Phone Number')}
         />
         <SaveInBookCheckbox fields={fields} formikData={formikData} />
       </div>
 
-      <div className="flex items-center justify-around mt-2">
+      <div className="flex mt-4">
         <CancelButton />
         <SaveButton
           isFormValid={isBillingAddressTouched}

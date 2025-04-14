@@ -34,6 +34,7 @@ import useShippingAddressCartContext from '../hooks/useShippingAddressCartContex
 
 const defaultValues = {
   company: '',
+  salutation: 1,
   firstname: '',
   lastname: '',
   street: [''],
@@ -45,10 +46,11 @@ const defaultValues = {
   saveInBook: false,
 };
 
-const requiredMessage = __('%1 is required');
+const requiredMessage = __('This is a required field.');
 
 const initValidationSchema = {
   company: YupString().required(requiredMessage),
+  salutation: YupString().required(requiredMessage),
   firstname: YupString().required(requiredMessage),
   lastname: YupString().required(requiredMessage),
   street: YupArray().test(

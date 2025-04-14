@@ -8,6 +8,7 @@ function SaveButton({ actions, isFormValid }) {
   return (
     <Button
       variant="primary"
+      size="lg"
       disable={!isFormValid}
       click={actions.saveAddress}
     >

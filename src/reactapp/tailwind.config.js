@@ -18,8 +18,8 @@ module.exports = {
       colors: {
         primary: {
           lighter: colors.blue['300'],
-          DEFAULT: colors.blue['800'],
-          darker: colors.blue['900'],
+          DEFAULT: '#ff671f',
+          darker: '#e55c1b',
         },
         secondary: {
           lighter: colors.blue['100'],
@@ -47,8 +47,8 @@ module.exports = {
       backgroundColor: {
         primary: {
           lighter: colors.blue['600'],
-          DEFAULT: colors.blue['700'],
-          darker: colors.blue['800'],
+          DEFAULT: '#ff671f',
+          darker: '#e55c1b',
         },
         secondary: {
           lighter: colors.blue['100'],
@@ -64,8 +64,8 @@ module.exports = {
       borderColor: {
         primary: {
           lighter: colors.blue['600'],
-          DEFAULT: colors.blue['700'],
-          darker: colors.blue['800'],
+          DEFAULT: '#ff671f',
+          darker: '#e55c1b',
         },
         secondary: {
           lighter: colors.blue['100'],

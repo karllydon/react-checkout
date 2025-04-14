@@ -11,6 +11,7 @@ import { _keys } from '../../../utils';
 import LocalStorage from '../../../utils/localStorage';
 import { isValidCustomerAddressId } from '../../../utils/address';
 import useCountryState from '../../address/hooks/useCountryState';
+import useSalutationState from '../../address/hooks/useSalutationState';
 import useAddressWrapper from '../../address/hooks/useAddressWrapper';
 import useFormValidateThenSubmit from '../../../hook/useFormValidateThenSubmit';
 import useShippingAddressAppContext from '../hooks/useShippingAddressAppContext';
@@ -41,6 +42,7 @@ function ShippingAddressForm() {
     fields,
     formikData,
   });
+  const { salutationOptions } = useSalutationState();
   const formSubmitHandler = useFormValidateThenSubmit({
     formId,
     formikData,
@@ -92,6 +94,12 @@ function ShippingAddressForm() {
     setFieldValue(fields.region, '');
   };
 
+  const handleSalutationChange = (event) => {
+    const newValue = event.target.value;
+    setFieldTouched(fields.salutation, newValue);
+    setFieldValue(fields.salutation, newValue);
+  };
+
   if (viewMode) {
     return null;
   }
@@ -99,9 +107,29 @@ function ShippingAddressForm() {
   return (
     <>
       <div className="py-2">
+        <SelectInput
+          required
+          name={fields.salutation}
+          formikData={formikData}
+          options={salutationOptions}
+          onChange={handleSalutationChange}
+        />
         <TextInput
           required
-          label={__('Company')}
+          name={fields.firstname}
+          formikData={formikData}
+          onKeyDown={handleKeyDown}
+          placeholder={__('First name')}
+        />
+        <TextInput
+          required
+          name={fields.lastname}
+          formikData={formikData}
+          onKeyDown={handleKeyDown}
+          placeholder={__('Last name')}
+        />
+        <TextInput
+          required
           name={fields.company}
           formikData={formikData}
           onKeyDown={handleKeyDown}
@@ -109,23 +137,6 @@ function ShippingAddressForm() {
         />
         <TextInput
           required
-          name={fields.firstname}
-          formikData={formikData}
-          label={__('First name')}
-          onKeyDown={handleKeyDown}
-          placeholder={__('First name')}
-        />
-        <TextInput
-          required
-          name={fields.lastname}
-          label={__('Last name')}
-          formikData={formikData}
-          onKeyDown={handleKeyDown}
-          placeholder={__('Last name')}
-        />
-        <TextInput
-          required
-          label={__('Street')}
           formikData={formikData}
           onKeyDown={handleKeyDown}
           placeholder={__('Street')}
@@ -133,15 +144,13 @@ function ShippingAddressForm() {
         />
         <TextInput
           required
-          placeholder="12345"
+          placeholder="Postal Code"
           name={fields.zipcode}
           formikData={formikData}
-          label={__('Postal Code')}
           onKeyDown={handleKeyDown}
         />
         <TextInput
           required
-          label={__('City')}
           name={fields.city}
           formikData={formikData}
           placeholder={__('City')}
@@ -150,7 +159,6 @@ function ShippingAddressForm() {
 
         <SelectInput
           required
-          label={__('Country')}
           name={fields.country}
           formikData={formikData}
           options={countryOptions}
@@ -159,7 +167,6 @@ function ShippingAddressForm() {
 
         <SelectInput
           required
-          label={__('State')}
           name={fields.region}
           options={stateOptions}
           formikData={formikData}
@@ -168,11 +175,10 @@ function ShippingAddressForm() {
 
         <TextInput
           required
-          label={__('Phone')}
           name={fields.phone}
           formikData={formikData}
           onKeyDown={handleKeyDown}
-          placeholder={__('+32 000 000 000')}
+          placeholder={__('Phone Number')}
         />
         <SaveInBookCheckbox fields={fields} formikData={formikData} />
         <div className="mt-4">

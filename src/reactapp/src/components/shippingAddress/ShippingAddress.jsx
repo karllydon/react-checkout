@@ -33,11 +33,7 @@ function ShippingAddress() {
   const streetError = _get(formSectionErrors, 'street');
 
   if (streetError) {
-    _set(
-      formSectionErrors,
-      'street[0]',
-      __('%1 is required', 'Street Address')
-    );
+    _set(formSectionErrors, 'street[0]', __('This is a required field.'));
   }
 
   const shippingFormikData = useMemo(

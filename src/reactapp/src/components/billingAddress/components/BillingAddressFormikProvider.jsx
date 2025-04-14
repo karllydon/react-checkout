@@ -26,7 +26,7 @@ import BillingAddressFormContext from '../context/BillingAddressFormikContext';
 import useBillingAddressAppContext from '../hooks/useBillingAddressAppContext';
 import useBillingAddressCartContext from '../hooks/useBillingAddressCartContext';
 
-const requiredMessage = __('%1 is required');
+const requiredMessage = __('This is a required field');
 
 const initValidationSchema = {
   email: YupString().required(requiredMessage).email(__('Email is invalid')),
