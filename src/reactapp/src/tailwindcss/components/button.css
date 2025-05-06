@@ -23,10 +23,17 @@
 }
 
 .btn-secondary {
-    @apply text-black bg-white;
+    @apply text-white bg-secondary;
 
     &:hover {
         @apply bg-white;
+    }
+}
+
+.btn-danger {
+    @apply bg-danger;
+    &:hover {
+        @apply bg-danger-darker;
     }
 }
 

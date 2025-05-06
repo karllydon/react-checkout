@@ -2,15 +2,18 @@
  * different styles can be found at https://tailwindcss-forms.vercel.app/
  **/
 .form-input {
-    @apply mt-4 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black   
+    @apply mt-4 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black bg-container  
 }
 .form-email,
 .form-select {
-    @apply block w-full mt-4 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black
+    @apply block w-full mt-4 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black bg-container
+}
+.form-control label {
+    @apply font-bold
 }
 .form-multiselect,
 .form-textarea {
-    @apply border border-gray-300 rounded-md shadow-sm;
+    @apply border rounded-md shadow-sm bg-container;
 
     &:focus {
         @apply border-primary-lighter ring ring-primary ring-opacity-50;

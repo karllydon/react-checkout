@@ -37,7 +37,6 @@ function SelectInput({
       <div className="flex items-center justify-between">
         <label htmlFor={inputId} className="md:text-sm">
           {label}
-          {required && <sup> *</sup>}
         </label>
         <div
           id={`${inputId}-feedback`}
@@ -55,7 +54,7 @@ function SelectInput({
         name={name}
         id={inputId}
         placeholder={placeholder}
-        className={`w-full p-2 form-select xs:block max-w-md ${
+        className={`w-full p-2 form-select xs:block ${
           hasError ? 'border-dashed border-red-500' : ''
         }`}
         onChange={(event) => {

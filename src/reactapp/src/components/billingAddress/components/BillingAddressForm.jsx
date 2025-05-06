@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { SaveButton } from '../../address';
 import TextInput from '../../common/Form/TextInput';
 import SelectInput from '../../common/Form/SelectInput';
-import CancelButton from './billingAddressForm/CancelButton';
 import SaveInBookCheckbox from '../../address/components/SaveInBookCheckbox';
 import { __ } from '../../../i18n';
 import { _keys } from '../../../utils';
@@ -186,7 +184,6 @@ function BillingAddressForm() {
       </div>
 
       <div className="flex mt-4">
-        <CancelButton />
         <SaveButton
           isFormValid={isBillingAddressTouched}
           actions={{ saveAddress: saveAddressAction }}

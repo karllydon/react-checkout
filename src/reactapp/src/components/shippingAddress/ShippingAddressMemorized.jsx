@@ -11,7 +11,7 @@ import { formikDataShape } from '../../utils/propTypes';
 const ShippingAddressMemorized = React.memo(({ formikData }) => (
   <ShippingAddressFormikProvider formikData={formikData}>
     <Card>
-      <ToggleBox title={__('Shipping Information')} show>
+      <ToggleBox title={__('2. Shipping Information')} show>
         <ShippingAddressForm />
         <ShippingAddressView />
       </ToggleBox>

@@ -2,6 +2,10 @@ import LocalStorage from '../../utils/localStorage';
 
 const initialState = {
   checkoutAgreements: {},
+  marketingOptIn: {
+    email: false,
+    post: false,
+  },
   countriesLoaded: [],
   countryList: [],
   customer: {},

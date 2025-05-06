@@ -89,17 +89,17 @@ function CouponCodeForm() {
           formikData={formikData}
           name={fields.couponCode}
           disabled={!!appliedCoupon}
-          placeholder={__('Enter your discount code')}
+          placeholder={__('Enter promo code')}
         />
       </div>
 
-      <div className="mt-2">
+      <div className="mt-2 w-full">
         <Button
           click={submitHandler}
-          variant={appliedCoupon ? 'danger' : 'primary'}
+          variant={appliedCoupon ? 'danger' : 'secondary'}
           disable={appliedCoupon ? false : codeChecked === couponCode}
         >
-          {appliedCoupon ? __('Remove Coupon Code') : __('Apply Discount')}
+          {appliedCoupon ? __('Remove Coupon Code') : __('Apply Promo Code')}
         </Button>
       </div>
     </>

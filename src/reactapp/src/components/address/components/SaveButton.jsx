@@ -4,13 +4,22 @@ import { bool, func, shape } from 'prop-types';
 import Button from '../../common/Button';
 import { __ } from '../../../i18n';
 
+import useStageContext from '../../../hook/useStageContext';
+
 function SaveButton({ actions, isFormValid }) {
+  const { updateCheckoutStep } = useStageContext();
+
+  const handleSave = () => {
+    actions.saveAddress();
+    updateCheckoutStep();
+  };
+
   return (
     <Button
       variant="primary"
       size="lg"
       disable={!isFormValid}
-      click={actions.saveAddress}
+      click={handleSave}
     >
       {__('Save and Continue')}
     </Button>

@@ -87,3 +87,4 @@ export const BILLING_ADDR_FORM = 'billing_address';
 export const PAYMENT_METHOD_FORM = 'payment_method';
 export const SHIPPING_ADDR_FORM = 'shipping_address';
 export const CHECKOUT_AGREEMENTS_FORM = 'agreements';
+export const MARKETING_FORM = 'marketing';

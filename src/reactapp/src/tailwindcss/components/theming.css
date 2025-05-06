@@ -1,4 +1,50 @@
 body {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.columns {
+    /* margin: 0 auto; */
+    padding-bottom: 0;
+    color: #413f3f;
+    letter-spacing: .3px;
+    line-height: 1.4;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    overflow: hidden;
+    min-height: 80vh;
+    width: 100%;
+}
+
+
+.checkout-index-index .opc-wrapper .opc {
+    list-style: none;
+    padding: 0 0 10px;
+}
+.checkout-index-index .opc-wrapper .page-title-wrapper .page-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: #00284b;
+    position: relative;
+}
+
+.checkout-index-index .opc-wrapper .page-title-wrapper {
+    padding: 25px 0 30px;
+}
+
+.opc-wrapper {
+    padding-right: 25px;
+    box-shadow: inset -10px -5px 10px 0 #ebebeb;
+    width: 100%;
+}
+
+.title span {
+    font-size: 24px;
+    font-weight: 600;
+    color: #00284b;
+}
+
+body {
     @apply bg-container;
 }
 
@@ -11,7 +57,7 @@ body {
 }
 
 .input {
-    @apply w-auto px-4 py-2 mr-2 text-base border rounded md:mr-4 lg:mr-0 xl:mr-4;
+    @apply w-full px-4 py-2 mr-2 text-base border rounded md:mr-4 lg:mr-0 xl:mr-4;
 
     &-light {
         @apply bg-white border-gray-400;
@@ -22,12 +68,3 @@ body {
     }
 }
 
-.card {
-    @apply p-4 rounded-sm shadow bg-container-lighter;
-}
-
-.card-interactive {
-    &:hover {
-        @apply bg-container;
-    }
-}

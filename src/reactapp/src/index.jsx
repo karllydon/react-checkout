@@ -7,6 +7,7 @@ import CheckoutForm from './components/CheckoutForm';
 import AppDataProvider from './context/App/AppDataProvider';
 import CartDataProvider from './context/Cart/CartDataProvider';
 import CheckoutFormProvider from './context/Form/CheckoutFormProvider';
+import StageProvider from './context/Stage/StageProvider';
 
 import './index.css';
 
@@ -15,7 +16,9 @@ function Checkout() {
     <AppDataProvider>
       <CartDataProvider>
         <CheckoutFormProvider>
-          <CheckoutForm />
+          <StageProvider>
+            <CheckoutForm />
+          </StageProvider>
         </CheckoutFormProvider>
       </CartDataProvider>
     </AppDataProvider>

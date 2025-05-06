@@ -10,7 +10,7 @@ import { formikDataShape } from '../../utils/propTypes';
 const CouponCodeMemorized = React.memo(({ formikData }) => (
   <CouponCodeFormikManager formikData={formikData}>
     <Card>
-      <ToggleBox title={__('Apply Discount Code')}>
+      <ToggleBox title={__('Add your promo code')}>
         <CouponCodeForm />
       </ToggleBox>
     </Card>

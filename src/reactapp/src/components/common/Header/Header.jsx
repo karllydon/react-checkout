@@ -3,18 +3,16 @@ import { bool, node } from 'prop-types';
 
 function Header({ children, extra, small, ...props }) {
   return (
-    <header
-      role="button"
-      className="flex items-center justify-between cursor-pointer select-none"
-      {...props}
-    >
-      <span
-        className={`font-bold text-indigo ${small ? 'text-sm' : 'text-base'}`}
+    <div className="title">
+      <header
+        role="button"
+        className="flex items-center justify-between cursor-pointer select-none"
+        {...props}
       >
-        {children}
-      </span>
-      {extra}
-    </header>
+        <span className={small ? 'text-sm' : 'text-base'}>{children}</span>
+        {extra}
+      </header>
+    </div>
   );
 }
 

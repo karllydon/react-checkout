@@ -3,7 +3,6 @@ import React from 'react';
 import { SaveButton } from '../../address';
 import TextInput from '../../common/Form/TextInput';
 import SelectInput from '../../common/Form/SelectInput';
-import CancelButton from './shippingAddressForm/CancelButton';
 import BillingSameAsShippingCheckbox from './BillingSameAsShippingCheckbox';
 import SaveInBookCheckbox from '../../address/components/SaveInBookCheckbox';
 import { __ } from '../../../i18n';
@@ -186,8 +185,7 @@ function ShippingAddressForm() {
         </div>
       </div>
 
-      <div className="flex items-center justify-around mt-2">
-        <CancelButton />
+      <div className="flex mt-2">
         <SaveButton
           isFormValid={isBillingFormTouched}
           actions={{ saveAddress: saveAddressAction }}
