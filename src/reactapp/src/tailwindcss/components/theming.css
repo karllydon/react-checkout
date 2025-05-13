@@ -1,19 +1,12 @@
-body {
-    width: 100%;
-    box-sizing: border-box;
-}
-
 .columns {
-    /* margin: 0 auto; */
+    margin: auto auto; 
     padding-bottom: 0;
     color: #413f3f;
     letter-spacing: .3px;
     line-height: 1.4;
     display: grid;
     grid-template-columns: 70% 30%;
-    overflow: hidden;
     min-height: 80vh;
-    width: 100%;
 }
 
 
@@ -21,14 +14,14 @@ body {
     list-style: none;
     padding: 0 0 10px;
 }
-.checkout-index-index .opc-wrapper .page-title-wrapper .page-title {
+.opc-wrapper .page-title-wrapper .page-title {
     font-size: 3.6rem;
     font-weight: 700;
     color: #00284b;
     position: relative;
 }
 
-.checkout-index-index .opc-wrapper .page-title-wrapper {
+.opc-wrapper .page-title-wrapper {
     padding: 25px 0 30px;
 }
 

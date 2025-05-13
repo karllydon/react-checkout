@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useMemo, useState, useCallback } from 'react';
 import { node } from 'prop-types';
 
@@ -15,6 +16,7 @@ function StageProvider({ children }) {
 
   const updateCheckoutStep = useCallback(() => {
     if (checkoutStep !== checkoutSteps.payment) {
+      console.log(checkoutStep + 1);
       setCheckoutStep(checkoutStep + 1);
     }
   }, [checkoutStep, checkoutSteps.payment]);

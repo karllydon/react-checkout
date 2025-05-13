@@ -72,7 +72,6 @@ class Index extends Action implements HttpGetActionInterface
 
         /** @var Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getConfig()->getTitle()->set(__('Checkout'));
 
         return $resultPage;
     }

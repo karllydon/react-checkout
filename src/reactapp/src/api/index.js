@@ -23,6 +23,8 @@ import restSetGuestPaymentMethod from './cart/restSetGuestPaymentMethod';
 import { applyCouponCodeToCart, removeCouponCodeFromCart } from './cart/coupon';
 import setCustomerAddressOnCartBilling from './cart/setCustomerAddressOnBilling';
 import setCustomerAddrOnShippingAddr from './cart/setCustomerAddrOnShippingAddr';
+import closePage from './customer/closePage';
+import marketingSubmit from './customer/marketingSubmit/marketingSubmit';
 
 export const generateCustomerToken = generateToken;
 
@@ -77,3 +79,7 @@ export const aggregatedQueryRequest = aggregatedQuery;
 export const applyCouponCodeToCartRequest = applyCouponCodeToCart;
 
 export const removeCouponCodeFromCartRequest = removeCouponCodeFromCart;
+
+export const closePageRequest = closePage;
+
+export const marketingSubmitRequest = marketingSubmit;

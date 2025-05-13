@@ -7,11 +7,11 @@ import useMarketingAppContext from './hooks/useMarketingAppContext';
 import { _isObjEmpty } from '../../utils';
 
 const MarketingMemorized = React.memo(({ formikData }) => {
-  const { marketingOptIn } = useMarketingAppContext();
+  const { marketingOptIn, marketingSubmit } = useMarketingAppContext();
 
   return _isObjEmpty(marketingOptIn) ? null : (
     <MarketingFormikProvider formikData={formikData}>
-      <MarketingForm />
+      <MarketingForm marketingSubmit={marketingSubmit} />
     </MarketingFormikProvider>
   );
 });

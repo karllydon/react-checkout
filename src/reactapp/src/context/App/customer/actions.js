@@ -7,6 +7,7 @@ import {
   updateCustomerAddressRequest,
   fetchCustomerAddressListRequest,
   mergeCartsRequest,
+  marketingSubmitRequest,
 } from '../../../api';
 import {
   setErrorMessageAction,
@@ -47,6 +48,16 @@ export async function sigInCustomerAction(dispatch, userCredentials) {
   }
 
   return false;
+}
+
+export async function marketingSubmitAction(dispatch, email, post) {
+  try {
+    const response = await marketingSubmitRequest(dispatch, email, post);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+  return {};
 }
 
 export async function ajaxLoginAction(dispatch, userCredentials) {

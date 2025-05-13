@@ -1,17 +1,17 @@
-/* eslint-disable no-console */
-import { React, useEffect } from 'react';
+import { React } from 'react';
+import { func } from 'prop-types';
 import Checkbox from '../../common/Form/Checkbox';
+import SaveButton from './SaveButton';
+
 import useMarketingFormikContext from '../hooks/useMarketingFormikContext';
 
-function MarketingForm() {
-  const { fields, marketing } = useMarketingFormikContext();
+function MarketingForm({ marketingSubmit }) {
+  const { marketing, setFieldValue } = useMarketingFormikContext();
 
-  useEffect(() => {
-    console.log('FIELDS');
-    console.log(JSON.stringify(fields));
-    console.log('MARKETING');
-    console.log(JSON.stringify(marketing));
-  });
+  const toggle = (event) => {
+    const newOptIn = !marketing[event.target.id];
+    setFieldValue(`marketing.${event.target.id}`, newOptIn);
+  };
 
   return (
     <div id="marketing-info">
@@ -25,18 +25,30 @@ function MarketingForm() {
         we will use your personal data our Privacy policy is available to read
         on our website.
       </p>
-      <Checkbox
-        name="marketingInfo.optIn"
-        isChecked={false}
-        label={"Customer doesn't want to receive email updates"}
-      />
-      <Checkbox
-        name="marketingInfoPost.optIn"
-        isChecked={false}
-        label={"Customer doesn't want to receive updates by post"}
-      />
+      {marketing && (
+        <>
+          <Checkbox
+            name="email"
+            isChecked={marketing.email}
+            label={"Customer doesn't want to receive email updates"}
+            onChange={toggle}
+          />
+          <Checkbox
+            name="post"
+            isChecked={marketing.post}
+            label={"Customer doesn't want to receive updates by post"}
+            onChange={toggle}
+          />{' '}
+        </>
+      )}
+      <br />
+      <SaveButton marketingSubmit={marketingSubmit} />
     </div>
   );
 }
+
+MarketingForm.propTypes = {
+  marketingSubmit: func.isRequired,
+};
 
 export default MarketingForm;
