@@ -7,7 +7,6 @@ import NoPaymentMethodInfoBox from './components/NoPaymentMethodInfoBox';
 import PaymentMethodFormManager from './components/PaymentMethodFormManager';
 import { __ } from '../../i18n';
 import { formikDataShape } from '../../utils/propTypes';
-import customRenderers from '../../paymentMethods/customRenderers';
 import usePaymentMethodCartContext from './hooks/usePaymentMethodCartContext';
 
 const PaymentMethodMemorized = React.memo(({ formikData }) => {
@@ -18,7 +17,7 @@ const PaymentMethodMemorized = React.memo(({ formikData }) => {
       <Card classes={isPaymentAvailable ? '' : 'opacity-75'}>
         <ToggleBox show title={__('Payment Methods')}>
           {isPaymentAvailable ? (
-            <PaymentMethodList methodRenderers={customRenderers} />
+            <PaymentMethodList />
           ) : (
             <NoPaymentMethodInfoBox />
           )}

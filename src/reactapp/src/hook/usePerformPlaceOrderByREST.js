@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { get as _get, set as _set } from 'lodash-es';
-
+import Cookies from 'js-cookie';
 import { __ } from '../i18n';
-import { LOGIN_FORM } from '../config';
 import useAppContext from './useAppContext';
 import useCartContext from './useCartContext';
 import { _isObjEmpty, _keys } from '../utils';
@@ -10,8 +9,13 @@ import { performRedirect } from '../utils/payment';
 
 export default function usePerformPlaceOrderByREST(paymentMethodCode) {
   const { cartId, setRestPaymentMethod, setOrderInfo } = useCartContext();
-  const { isLoggedIn, setPageLoader, setErrorMessage, checkoutAgreements } =
-    useAppContext();
+  const {
+    isLoggedIn,
+    fetchCaseDetails,
+    setPageLoader,
+    setErrorMessage,
+    checkoutAgreements,
+  } = useAppContext();
 
   return useCallback(
     async (
@@ -19,7 +23,9 @@ export default function usePerformPlaceOrderByREST(paymentMethodCode) {
       { extraPaymentData = {}, additionalData, extensionAttributes = {} }
     ) => {
       try {
-        const email = _get(values, `${LOGIN_FORM}.email`);
+        const caseId = Cookies.get('params_call');
+        const caseResponse = await fetchCaseDetails(caseId);
+        const email = _get(caseResponse, 'email');
         const paymentMethodData = {
           paymentMethod: {
             method: paymentMethodCode,
@@ -38,11 +44,8 @@ export default function usePerformPlaceOrderByREST(paymentMethodCode) {
           });
         }
 
-        if (!isLoggedIn) {
-          _set(paymentMethodData, 'email', email);
-        } else {
-          _set(paymentMethodData, 'cartId', cartId);
-        }
+        _set(paymentMethodData, 'email', email);
+        _set(paymentMethodData, 'cartId', cartId);
 
         setPageLoader(true);
         const order = await setRestPaymentMethod(paymentMethodData, isLoggedIn);
@@ -64,14 +67,15 @@ export default function usePerformPlaceOrderByREST(paymentMethodCode) {
       }
     },
     [
-      cartId,
-      isLoggedIn,
-      setOrderInfo,
-      setPageLoader,
-      setErrorMessage,
+      fetchCaseDetails,
       paymentMethodCode,
       checkoutAgreements,
+      cartId,
+      setPageLoader,
       setRestPaymentMethod,
+      isLoggedIn,
+      setOrderInfo,
+      setErrorMessage,
     ]
   );
 }

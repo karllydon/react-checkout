@@ -7,9 +7,18 @@
     display: grid;
     grid-template-columns: 70% 30%;
     min-height: 80vh;
+    min-width: 80vh;
 }
 
-
+.page-title:after {
+    content: "";
+    height: 4px;
+    width: 35px;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    background: #ff671f;
+}
 .checkout-index-index .opc-wrapper .opc {
     list-style: none;
     padding: 0 0 10px;

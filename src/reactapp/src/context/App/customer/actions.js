@@ -8,6 +8,7 @@ import {
   fetchCustomerAddressListRequest,
   mergeCartsRequest,
   marketingSubmitRequest,
+  fetchCaseDetailsRequest,
 } from '../../../api';
 import {
   setErrorMessageAction,
@@ -53,6 +54,16 @@ export async function sigInCustomerAction(dispatch, userCredentials) {
 export async function marketingSubmitAction(dispatch, email, post) {
   try {
     const response = await marketingSubmitRequest(dispatch, email, post);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+  return {};
+}
+
+export async function fetchCaseDetailsAction(dispatch, caseId) {
+  try {
+    const response = await fetchCaseDetailsRequest(dispatch, caseId);
     return response;
   } catch (error) {
     console.error(error);

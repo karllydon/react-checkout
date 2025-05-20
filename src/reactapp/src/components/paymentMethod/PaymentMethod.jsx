@@ -5,7 +5,10 @@ import { useFormikContext } from 'formik';
 import PaymentMethodMemorized from './PaymentMethodMemorized';
 import useFormikMemorizer from '../../hook/useFormikMemorizer';
 import { CHECKOUT_AGREEMENTS_FORM, PAYMENT_METHOD_FORM } from '../../config';
-
+/**
+ * klarnapospayment
+ * vaxltd_adyen_pay_by_link
+ */
 /**
  * Entry point of payment method Form Section
  *

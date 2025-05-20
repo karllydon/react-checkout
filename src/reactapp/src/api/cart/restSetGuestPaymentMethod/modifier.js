@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import { get as _get } from 'lodash-es';
 
 import { __ } from '../../../i18n';
 
 export default function restSetGuestPaymentMethodModifier(result) {
   const message = _get(result, 'message');
-
+  console.log(result);
   if (message) {
     throw new Error(
       __(

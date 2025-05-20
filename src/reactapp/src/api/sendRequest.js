@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   responseDataEmpty,
   responseContainErrors,
@@ -30,7 +31,16 @@ export default function sendRequest(
   };
   const method = isGetRequest ? 'GET' : 'POST';
   const token = LocalStorage.getCustomerToken();
-  const url = `${config.baseUrl}${relativeUrl || '/graphql'}`;
+
+  let url = '';
+
+  if (relativeUrl) {
+    const formattedUrl =
+      relativeUrl.charAt(0) === '/' ? relativeUrl : `/${relativeUrl}`;
+    url = `${config.baseUrl}${formattedUrl}`;
+  } else {
+    url = `${config.baseUrl}${'/graphql'}`;
+  }
 
   if (token) {
     headers.Authorization = `Bearer ${token}`;
@@ -40,6 +50,13 @@ export default function sendRequest(
 
   if (!isGetRequest) {
     fetchOptions.body = JSON.stringify({ ...queryParams });
+  } else if (Object.keys(queryParams).length > 0 && relativeUrl) {
+    // append params to url if REST GET request
+    const tempUrl = new URL(url);
+    Object.keys(queryParams).forEach((key) => {
+      tempUrl.searchParams.append(key, queryParams[key]);
+    });
+    url = tempUrl.href;
   }
 
   return fetch(url, fetchOptions)

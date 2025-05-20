@@ -25,6 +25,7 @@ import setCustomerAddressOnCartBilling from './cart/setCustomerAddressOnBilling'
 import setCustomerAddrOnShippingAddr from './cart/setCustomerAddrOnShippingAddr';
 import closePage from './customer/closePage';
 import marketingSubmit from './customer/marketingSubmit/marketingSubmit';
+import fetchCaseDetails from './customer/fetchCaseDetails';
 
 export const generateCustomerToken = generateToken;
 
@@ -83,3 +84,5 @@ export const removeCouponCodeFromCartRequest = removeCouponCodeFromCart;
 export const closePageRequest = closePage;
 
 export const marketingSubmitRequest = marketingSubmit;
+
+export const fetchCaseDetailsRequest = fetchCaseDetails;

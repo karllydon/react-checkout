@@ -1,84 +1,51 @@
+/* eslint-disable no-console */
 import React from 'react';
-import { object } from 'prop-types';
-import { get as _get } from 'lodash-es';
-
-import RadioInput from '../../common/Form/RadioInput';
 import { __ } from '../../../i18n';
-import { classNames, _objToArray } from '../../../utils';
+import { classNames } from '../../../utils';
 import usePaymentMethodCartContext from '../hooks/usePaymentMethodCartContext';
 import usePaymentMethodFormContext from '../hooks/usePaymentMethodFormContext';
+import PaymentMethodAppProvider from '../../../paymentMethods/context/PaymentApp/PaymentAppProvider';
+import PaymentConfigProvider from '../../../paymentMethods/context/PaymentConfig/PaymentConfigProvider';
+import PaymentsContainer from '../../../paymentMethods/PaymentsContainer';
 
-function PaymentMethodList({ methodRenderers }) {
-  const { fields, submitHandler, formikData } = usePaymentMethodFormContext();
+function PaymentMethodList() {
+  const { fields, formikData } = usePaymentMethodFormContext();
   const { methodList, isVirtualCart, doCartContainShippingAddress } =
     usePaymentMethodCartContext();
   const { paymentValues, setFieldValue, setFieldTouched } = formikData;
   const paymentAvailable = isVirtualCart || doCartContainShippingAddress;
 
-  const handlePaymentMethodSelection = async (event) => {
-    const methodSelected = _get(methodList, `${event.target.value}.code`);
-
-    if (!methodSelected) {
-      return;
-    }
-
-    await setFieldValue(fields.code, methodSelected);
-    setFieldTouched(fields.code, true);
-
-    // don't need to save payment method in case the method opted has a custom
-    // renderer. This is because custom payment renderers may have custom
-    // functionalities associated with them. So if in case they want to perform
-    // save payment operation upon selection, then they need to deal with it there.
-    if (!methodRenderers[methodSelected]) {
-      await submitHandler(methodSelected);
-    }
-  };
-
   return (
-    <div
-      title={
-        !paymentAvailable ? __('Please provide a shipping address first.') : ''
-      }
-      className={classNames(
-        !paymentAvailable ? 'cursor-not-allowed opacity-40' : '',
-        'py-4'
-      )}
-    >
-      <ul>
-        {_objToArray(methodList).map((method) => {
-          const MethodRenderer = methodRenderers[method.code];
-          return (
-            <li key={method.code}>
-              {MethodRenderer ? (
-                <MethodRenderer
-                  method={method}
-                  selected={paymentValues}
-                  actions={{ change: handlePaymentMethodSelection }}
-                />
-              ) : (
-                <RadioInput
-                  value={method.code}
-                  label={method.title}
-                  name="paymentMethod"
-                  disabled={!paymentAvailable}
-                  onChange={handlePaymentMethodSelection}
-                  checked={method.code === paymentValues?.code}
-                />
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <PaymentMethodAppProvider>
+      <PaymentConfigProvider>
+        <div
+          title={
+            !paymentAvailable
+              ? __('Please provide a shipping address first.')
+              : ''
+          }
+          className={classNames(
+            !paymentAvailable ? 'cursor-not-allowed opacity-40' : '',
+            'py-4'
+          )}
+        >
+          {methodList &&
+            setFieldValue &&
+            setFieldTouched &&
+            fields &&
+            paymentValues && (
+              <PaymentsContainer
+                methodList={methodList}
+                setFieldValue={setFieldValue}
+                setFieldTouched={setFieldTouched}
+                fields={fields}
+                paymentValues={paymentValues}
+              />
+            )}
+        </div>
+      </PaymentConfigProvider>
+    </PaymentMethodAppProvider>
   );
 }
-
-PaymentMethodList.propTypes = {
-  methodRenderers: object,
-};
-
-PaymentMethodList.defaultProps = {
-  methodRenderers: {},
-};
 
 export default PaymentMethodList;
