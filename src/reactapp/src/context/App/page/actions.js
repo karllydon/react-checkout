@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { SET_PAGE_LOADER, SET_PAGE_MESSAGE } from './types';
 
 export function setPageLoaderAction(dispatch, loader) {
@@ -19,5 +20,6 @@ export function setSuccessMessageAction(dispatch, message) {
 }
 
 export function setErrorMessageAction(dispatch, message) {
+  console.log(message);
   setMessageAction(dispatch, { type: 'error', message });
 }

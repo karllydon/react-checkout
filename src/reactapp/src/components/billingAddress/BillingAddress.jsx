@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+/* eslint-disable no-console */
+import React, { useMemo, useEffect } from 'react';
 import { useFormikContext } from 'formik';
 import { get as _get, set as _set } from 'lodash-es';
 
@@ -28,6 +29,10 @@ function BillingAddress() {
   const { formSectionValues, formSectionErrors, isFormSectionTouched } =
     formSectionData;
   const streetError = _get(formSectionErrors, 'street');
+
+  useEffect(() => {
+    console.log(values);
+  });
 
   if (streetError) {
     _set(formSectionErrors, 'street[0]', __('This is a required field'));

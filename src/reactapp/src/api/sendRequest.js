@@ -33,7 +33,6 @@ export default function sendRequest(
   const token = LocalStorage.getCustomerToken();
 
   let url = '';
-
   if (relativeUrl) {
     const formattedUrl =
       relativeUrl.charAt(0) === '/' ? relativeUrl : `/${relativeUrl}`;
@@ -72,7 +71,6 @@ export default function sendRequest(
       }
 
       const exception = new GraphQLResponseException(response);
-
       dispatch({
         type: SET_PAGE_MESSAGE,
         payload: { type: 'error', message: exception.message },

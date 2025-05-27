@@ -13,6 +13,7 @@ import useAddressWrapper from '../../address/hooks/useAddressWrapper';
 import useBillingAddressAppContext from '../hooks/useBillingAddressAppContext';
 import useFormValidateThenSubmit from '../../../hook/useFormValidateThenSubmit';
 import useBillingAddressFormikContext from '../hooks/useBillingAddressFormikContext';
+import useLoginCartContext from '../../login/hooks/useLoginCartContext';
 
 function BillingAddressForm() {
   const {
@@ -43,10 +44,12 @@ function BillingAddressForm() {
     formikData,
   });
   const { salutationOptions } = useSalutationState();
+  const { setEmailOnGuestCart } = useLoginCartContext();
 
   const { selectedCountry, isBillingAddressTouched } = formikData;
 
   const saveAddressAction = async () => {
+    setEmailOnGuestCart('karl.lydon@tti-emea.com');
     let newAddressId = selectedAddress;
 
     // Updating mostRecentAddressList in prior to form submit; Because values

@@ -3,7 +3,6 @@ import { prepareFullName } from '../../../utils/customer';
 
 export default function updateCustomerAddressModifier(result) {
   const address = _get(result, 'data.updateCustomerAddress', {});
-
   const {
     id,
     firstname,
